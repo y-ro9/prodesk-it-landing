@@ -6,7 +6,7 @@
 
 ## 🚀 Live Demo
 
-**Live URL:** `[ADD YOUR VERCEL/NETLIFY URL HERE]`
+**Live URL:** `https://prodesk-it-landing-xi.vercel.app/`
 
 ![Prodesk IT Landing Page](./assets/images/preview.png)
 
