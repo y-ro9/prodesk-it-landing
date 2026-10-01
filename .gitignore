@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Build output (regenerate karna hai deploy pe)
+# css/tailwind.css
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env
+.env
+.env.local

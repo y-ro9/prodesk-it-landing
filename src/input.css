@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   BASE LAYER — global resets + theme variables
+   ========================================================= */
+@layer base {
+  :root {
+    --nav-bg: rgba(255, 255, 255, 0.72);
+    --nav-border: rgba(15, 23, 42, 0.06);
+  }
+
+  [data-theme="dark"] {
+    --nav-bg: rgba(13, 17, 23, 0.6);
+    --nav-border: rgba(255, 255, 255, 0.06);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 dark:bg-[#05070d] dark:text-slate-50;
+    @apply antialiased;
+    transition: background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-slate-50 dark:ring-offset-[#05070d];
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* =========================================================
+   COMPONENTS LAYER — reusable pieces
+   ========================================================= */
+@layer components {
+  .container-x {
+    @apply w-full max-w-container mx-auto px-5;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+           text-[0.96rem] font-semibold rounded-full
+           transition-all duration-300 ease-out will-change-transform;
+  }
+
+  .btn-primary {
+    @apply text-white shadow-brand bg-brand-gradient bg-[length:200%_200%];
+  }
+  .btn-primary:hover {
+    @apply -translate-y-1 scale-[1.03] shadow-brand-lg bg-right;
+  }
+  .btn-primary:active {
+    @apply -translate-y-px scale-[0.99];
+  }
+
+  .btn-ghost {
+    @apply bg-white text-slate-900 border border-slate-200
+           dark:bg-slate-900 dark:text-slate-50 dark:border-slate-700;
+  }
+  .btn-ghost:hover {
+    @apply -translate-y-1 border-brand-500 text-brand-500 shadow-lg;
+  }
+
+  /* ---------- Section helpers ---------- */
+  .section-tag {
+    @apply inline-block text-[0.78rem] font-bold uppercase tracking-[0.14em]
+           text-brand-500 bg-brand-500/10 px-3.5 py-1.5 rounded-full mb-4;
+  }
+
+  .section-title {
+    @apply text-[clamp(1.75rem,3.6vw,2.75rem)] font-extrabold leading-tight
+           tracking-tight mb-3.5;
+  }
+
+  .section-subtitle {
+    @apply text-slate-500 dark:text-slate-400 text-[1.02rem];
+  }
+
+  .gradient-text {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+
+  /* ---------- Nav link ---------- */
+  .nav-link {
+    @apply relative px-3.5 py-2 rounded-[10px] text-[0.94rem] font-medium
+           text-slate-500 dark:text-slate-400
+           transition-colors duration-300;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    @apply text-slate-900 dark:text-slate-50 bg-slate-100 dark:bg-slate-800;
+  }
+
+  /* ---------- Service card ---------- */
+  .service-card {
+    @apply relative flex flex-col gap-3.5 p-8 pt-8 rounded-3xl
+           bg-white dark:bg-[#0d1117]
+           border border-slate-200 dark:border-slate-800
+           shadow-sm
+           transition-all duration-300 ease-out will-change-transform;
+  }
+  .service-card:hover {
+    @apply -translate-y-2.5 scale-[1.02] shadow-2xl border-brand-500;
+  }
+
+  /* glow ring on hover */
+  .service-card::after {
+    content: "";
+    @apply absolute -inset-px rounded-3xl -z-10
+           bg-brand-gradient opacity-0 blur-2xl transition-opacity duration-300;
+  }
+  .service-card:hover::after {
+    @apply opacity-35;
+  }
+
+  .service-link {
+    @apply inline-flex items-center gap-1.5 mt-1
+           text-sm font-semibold text-brand-500
+           transition-all duration-300;
+  }
+  .service-link:hover {
+    @apply gap-2.5 text-brand-accent;
+  }
+
+  /* ---------- Social icon ---------- */
+  .social-icon {
+    @apply w-10 h-10 rounded-full
+           inline-flex items-center justify-center
+           border border-slate-200 dark:border-slate-700
+           text-slate-500 dark:text-slate-400
+           transition-all duration-300;
+  }
+  .social-icon:hover {
+    @apply -translate-y-1 scale-[1.08] bg-brand-gradient
+           text-white border-transparent shadow-brand;
+  }
+}
+
+/* =========================================================
+   UTILITIES LAYER — one-off helpers
+   ========================================================= */
+@layer utilities {
+  /* Glassmorphism for sticky navbar */
+  .nav-glass {
+    background-color: var(--nav-bg);
+    border-color: var(--nav-border);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}

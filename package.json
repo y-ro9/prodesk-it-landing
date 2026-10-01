@@ -1,0 +1,15 @@
+{
+  "name": "prodesk-it-landing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./css/tailwind.css --minify",
+    "dev": "tailwindcss -i ./src/input.css -o ./css/tailwind.css --watch"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
